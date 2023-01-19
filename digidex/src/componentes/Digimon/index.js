@@ -9,17 +9,22 @@ const Digimon = () => {
     async function fetchData() {
       const res = await fetch(url);
 
-      const data = await res.text();
+      const data = await res.json();
 
-      setDigimons(data);
+      const response = data.content;
+
+      setDigimons(response);
     }
     fetchData();
   }, []);
 
   return (
     <div>
-      <h1>Olá</h1>
-      <h2>{digimons}</h2>
+      <ul>
+        {digimons.map((digimon) => (
+          <li key={digimon.id}>{digimon.name}</li>
+        ))}
+      </ul>
     </div>
   );
 };
