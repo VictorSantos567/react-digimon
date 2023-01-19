@@ -1,31 +1,11 @@
-import './App.css';
-
-import { useState, useEffect } from "react";
-
-const url = "https://www.digi-api.com/api/v1/digimon";
+import "./App.css";
+import Digimon from "./componentes/Digimon";
 
 function App() {
-
-  const [digimons,setDigimons] = useState([]);
-
-  useEffect(() => {
-    async function fetchData(){
-      
-      const res = await fetch(url);
-      
-      const data = await res.json();
-
-      setDigimons(data);
-    }
-    fetchData();
-  },[]);
-
-  
-
   return (
     <div className="App">
       <h1>Oi</h1>
-      {digimons}
+      <Digimon />
     </div>
   );
 }
