@@ -3,35 +3,30 @@ import { useState, useEffect } from "react";
 const url = "https://www.digi-api.com/api/v1/digimon";
 
 const Digimon = () => {
-    
-    const [digimons,setDigimons] = useState([]);
+  const [digimons, setDigimons] = useState([]);
 
-    useEffect(() => {
-      async function fetchData(){
-        
-        const res = await fetch(url);
-        
-        const data = await res.json();
+  useEffect(() => {
+    async function fetchData() {
+      const res = await fetch(url);
 
-        const response = data.content
+      const data = await res.json();
 
-        setDigimons(response);
-      }
-      fetchData();
-    },[]);
+      const response = data.content;
 
+      setDigimons(response);
+    }
+    fetchData();
+  }, []);
 
-    return (
+  return (
     <div>
       <ul>
-        {digimons.map((digimon)=>
-          <li key={digimon.id}>
-            {digimon.name}
-          </li>
-        )}
+        {digimons.map((digimon) => (
+          <li key={digimon.id}>{digimon.name}</li>
+        ))}
       </ul>
     </div>
-    );
-}
+  );
+};
 
 export default Digimon;
