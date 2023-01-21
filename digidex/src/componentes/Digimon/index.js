@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 const url = "https://www.digi-api.com/api/v1/digimon";
 
-const Digimon = () => {
+const Digimon = (props) => {
   const [digimons, setDigimons] = useState([]);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ const Digimon = () => {
     }
     fetchData();
   }, []);
-
+  
   return (
     <div>
       <ul>
