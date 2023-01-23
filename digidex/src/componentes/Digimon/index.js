@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import Formulario from "../Formulario";
+
 
 const url = "https://www.digi-api.com/api/v1/digimon";
 
@@ -7,8 +9,9 @@ const Digimon = (props) => {
 
   useEffect(() => {
     async function fetchData() {
+    
       const res = await fetch(url);
-
+      
       const data = await res.json();
 
       const response = data.content;
@@ -17,6 +20,8 @@ const Digimon = (props) => {
     }
     fetchData();
   }, []);
+
+
   
   return (
     <div>
@@ -25,6 +30,7 @@ const Digimon = (props) => {
           <li key={digimon.id}>{digimon.name}</li>
         ))}
       </ul>
+      <Formulario />
     </div>
   );
 };

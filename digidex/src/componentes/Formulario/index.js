@@ -1,21 +1,36 @@
 import { useState } from "react";
+import "./Formulario.css"
 
-const Formulario = (props) => {
+const Formulario = ({digimon}) => {
     const placeholderModificada = `Digite o nome de um digimon...`;    
-    //const [nome,setNome] = useState("");
     
-    const aoSalvar = (evento) =>{
-        evento.preventDefault();
-        
+    const[name,setName] = useState(digimon ? digimon.name: "");
+
+    const handleName = (evento) => {
+        setName(evento.target.value)
     }
 
+    const handleSubmit = (evento) => {
+        evento.preventDefault();
+        console.log(name)
+
+        setName("");
+    }
+    
+
     return(
-        <section className="formulario">
-            <form onSubmit={aoSalvar}>
-            <input placeholder={placeholderModificada} />
+        <div>
+            <form onSubmit={handleSubmit}>
+                <input 
+                type="text" 
+                name="name" 
+                placeholder={placeholderModificada}
+                onChange={handleName}
+                value={name}
+                />
+                <input type="submit" value="enviar" />
             </form>
-            <button className="botao">Enviar</button>
-        </section>
+        </div>
     )
 }
 
