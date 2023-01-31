@@ -1,37 +1,39 @@
 import { useState } from "react";
-import "./Formulario.css"
+import Digimon from "../Digimon";
+import "./Formulario.css";
 
-const Formulario = ({digimon}) => {
-    const placeholderModificada = `Digite o nome de um digimon...`;    
-    
-    const[name,setName] = useState(digimon ? digimon.name: "");
+const Formulario = ({ digimon }) => {
+  const placeholderModificada = `Digite o nome de um digimon...`;
 
-    const handleName = (evento) => {
-        setName(evento.target.value)
-    }
+  const [name, setName] = useState(digimon ? digimon.name : "");
+  const [nome, setNome] = useState();
 
-    const handleSubmit = (evento) => {
-        evento.preventDefault();
-        console.log(name)
+  const handleName = (evento) => {
+    setName(evento.target.value);
+  };
 
-        setName("");
-    }
-    
+  const handleSubmit = (evento) => {
+    evento.preventDefault();
+    setNome(name);
 
-    return(
-        <div>
-            <form onSubmit={handleSubmit}>
-                <input 
-                type="text" 
-                name="name" 
-                placeholder={placeholderModificada}
-                onChange={handleName}
-                value={name}
-                />
-                <input type="submit" value="enviar" />
-            </form>
-        </div>
-    )
-}
+    setName("");
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="name"
+          placeholder={placeholderModificada}
+          onChange={handleName}
+          value={name}
+        />
+        <input type="submit" value="enviar" />
+      </form>
+      <Digimon teste={nome} />
+    </div>
+  );
+};
 
 export default Formulario;
