@@ -1,0 +1,10 @@
+-> install fastapi e uvicorn
+pip install fastapi "uvicorn[standard]"
+
+-> rodar servidor para que a cada alteração ele recarregue
+uvicorn main:app --reload
+
+from pydantic import BaseModel -- pesquisar
+from typing import Optional, List
+from uuid import UUID, uuid4
+from enum import Enum
